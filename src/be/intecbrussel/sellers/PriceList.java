@@ -9,7 +9,7 @@ public class PriceList {
     private double magnumStandardPrice;
 
     public PriceList() {
-        this(1,1,1);
+        this(1, 1, 1);
     }
 
     public PriceList(double ballPrice, double rocketPrice, double magnumStandardPrice) {
@@ -38,28 +38,27 @@ public class PriceList {
         return rocketPrice;
     }
 
-    public double getMagnumPrice(Magnum.MagnumType magnumType){
+    public double getMagnumPrice(Magnum.MagnumType magnumType) {
 
-        switch (magnumType){
+        switch (magnumType) {
             case MILKCHOCOLATE:
-                return magnumStandardPrice*1.1;
+                return magnumStandardPrice * 1.1;
 
             case WHITECHOCOLATE:
-                return magnumStandardPrice*1.2;
+                return magnumStandardPrice * 1.2;
 
             case BLACKCHOCOLATE:
-                return magnumStandardPrice*1.3;
+                return magnumStandardPrice * 1.3;
 
             case ROMANTICSTRAWBERRIES:
-                return magnumStandardPrice*1.4;
+                return magnumStandardPrice * 1.4;
 
             case ALPINENUTS:
-                return magnumStandardPrice*1.5;
+                return magnumStandardPrice * 1.5;
 
         }
         return magnumStandardPrice;
     }
-
 
 
 }
