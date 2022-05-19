@@ -69,7 +69,7 @@ public class IceCreamAppV2 {
                     break;
 
                 case 3:
-                    System.out.println("What flavor would you like?\n1 =MILKCHOCOLATE\n2 = WHITECHOCOLATE\n3 = BLACKCHOCOLATE\n4 = ALPINENUTS\n5 = ROMANTICSTRAWBERRIES");
+                    System.out.println("What flavor would you like?\n1 = MILKCHOCOLATE\n2 = WHITECHOCOLATE\n3 = BLACKCHOCOLATE\n4 = ALPINENUTS\n5 = ROMANTICSTRAWBERRIES");
                     try {
                         myIceCream[counter++] = myIceCreamCar.orderMagnum(flavorPickerMagnum(keyboardReader.nextInt()));
                         System.out.println("Here you go, one Magnum!");
