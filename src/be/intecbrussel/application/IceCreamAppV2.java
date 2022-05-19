@@ -1,6 +1,7 @@
 package be.intecbrussel.application;
 
 import be.intecbrussel.eatables.Cone;
+import be.intecbrussel.eatables.Eatable;
 import be.intecbrussel.eatables.Magnum;
 import be.intecbrussel.sellers.IceCreamCar;
 import be.intecbrussel.sellers.NoMoreIceCreamException;
@@ -19,7 +20,8 @@ public class IceCreamAppV2 {
         PriceList priceList = new PriceList();
         Stock stock = new Stock();
         Scanner keyboardReader = new Scanner(System.in);
-        Cone.Flavor[] flavors = new Cone.Flavor[5];
+        Eatable[] myIceCream = new Eatable[100];
+        int counter = 0;
 
         IceCreamCar myIceCreamCar = new IceCreamCar(priceList, stock);
 
@@ -27,6 +29,10 @@ public class IceCreamAppV2 {
             System.out.println("Well hello there, would you like some icecream? 1 = YES");
             if (keyboardReader.nextInt() != 1) {
                 System.out.println("Thank you, come again!");
+                for (int index =0; index<counter;index++){
+                    myIceCream[index].eat();
+
+                }
                 System.out.println("Profit totals: " + myIceCreamCar.getProfit());
                 System.exit(0);
             }
@@ -35,27 +41,41 @@ public class IceCreamAppV2 {
 
             switch (keyboardReader.nextInt()) {
                 case 1:
-                    System.out.println("How many balls would you like? 1 -5");
+                    System.out.println("How many balls would you like? 1 - 5");
                     int amountOfBalls = keyboardReader.nextInt();
+                    Cone.Flavor[] flavors = new Cone.Flavor[amountOfBalls];
+
                     for (int index = 0; index < amountOfBalls; index++) {
                         System.out.println("What flavor would you like?\n1 = STRAWBERRY\n2 = BANANA\n3 = CHOCOLATE\n4 = VANILLA\n5 = LEMON\n6 = STRACIATELLA\n7 = MOKKA\n8 = PISTACHE");
                         flavors[index] = IceCreamAppV2.flavorPickerCone(keyboardReader.nextInt());
                         keyboardReader.nextLine();
                     }
-                    myIceCreamCar.orderCone(flavors);
+                    try {
+                        myIceCream[counter++] = myIceCreamCar.orderCone(flavors);
+                        System.out.println("A cone for you, you're welcome!");
+                    } catch (NoMoreIceCreamException e) {
+
+                    }
                     break;
 
                 case 2:
                     System.out.println("One IceRocket, coming your way!");
                     try {
-                        myIceCreamCar.orderIceRocket();
+                        myIceCream[counter++] = myIceCreamCar.orderIceRocket();
+
                     } catch (NoMoreIceCreamException e) {
+
                     }
                     break;
 
                 case 3:
-                    System.out.println("What flavor would you like?\n1 =MILKCHOCOLATE\n2 = WHITECHOCOLATE\n3 = BLACKCHOCOLATE\n4 = ALPINENUTS\5 = ROMANTICSTRAWBERRIES");
-                    myIceCreamCar.orderMagnum(flavorPickerMagnum(keyboardReader.nextInt()));
+                    System.out.println("What flavor would you like?\n1 =MILKCHOCOLATE\n2 = WHITECHOCOLATE\n3 = BLACKCHOCOLATE\n4 = ALPINENUTS\n5 = ROMANTICSTRAWBERRIES");
+                    try {
+                        myIceCream[counter++] = myIceCreamCar.orderMagnum(flavorPickerMagnum(keyboardReader.nextInt()));
+                        System.out.println("Here you go, one Magnum!");
+                    } catch (NoMoreIceCreamException e) {
+
+                    }
                     break;
 
                 default:
