@@ -1,7 +1,5 @@
 package be.intecbrussel.eatables;
 
-import java.time.DateTimeException;
-import java.time.DayOfWeek;
 
 public class Cone implements Eatable {
 

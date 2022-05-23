@@ -23,21 +23,21 @@ public class IceCreamSalon implements IceCreamSeller {
     }
 
     @Override
-    public Cone orderCone(Cone.Flavor[] flavors) {
+    public Cone orderCone(Cone.Flavor[] flavors) throws NoMoreIceCreamException {
         totalProfit += priceList.getBallPrice() * flavors.length;
         return new Cone(flavors);
 
     }
 
     @Override
-    public IceRocket orderIceRocket() {
+    public IceRocket orderIceRocket() throws NoMoreIceCreamException {
         totalProfit += priceList.getRocketPrice();
         return new IceRocket();
 
     }
 
     @Override
-    public Magnum orderMagnum(Magnum.MagnumType type) {
+    public Magnum orderMagnum(Magnum.MagnumType type) throws NoMoreIceCreamException {
         totalProfit += priceList.getMagnumPrice(type);
         return new Magnum(type);
     }
